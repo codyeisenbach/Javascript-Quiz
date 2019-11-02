@@ -18,13 +18,8 @@ margin-left: 15%;
 }
 
 .content {
-display: flex;
-justify-content: center;
-position: fixed;
-width: 30%;
-height: 30%;
-background-color: lightblue;
-margin-top: 15%;
+display: none;
+
 }
 
 .question-text {
