@@ -9,7 +9,6 @@ var gameOver = false;
 
 
 
-$(".result").hide();
 $(".game-over-page").hide();
 
 
@@ -17,6 +16,10 @@ $(".game-over-page").hide();
 
 function startTimer(duration, display) {
     var timer = duration;
+    display.text(timer);
+    if (--timer < 0) {
+        timer = 0;
+    }
     myInterval = setInterval(function () {
         display.text(timer);
         if (--timer < 0) {
@@ -50,41 +53,40 @@ $("#start-button").click(function () {
 $(".answer-button").click(function () {
 
 
-    if ($(event.target).text() == questions[questionNum].answer) {
-        score = score + 20;
-        questionNum++;
-        $('.question-text').text(questions[questionNum].title);
-        $('#answer-one').text(questions[questionNum].choices[0]);
-        $('#answer-two').text(questions[questionNum].choices[1]);
-        $('#answer-three').text(questions[questionNum].choices[2]);
-        $('#answer-four').text(questions[questionNum].choices[3]);
-        answer = true;
-
-    }
 
 
-    else if ($(".time").text() == 0) {
-        gameOver = true;
-        console.log(gameOver);
-        $('.game-over-page').show();
-    }
-
-    else if (questionNum === 4) {
+    if ($(".time").text() == 0 || questionNum == 4) {
         $('.content').hide();
         clearInterval(myInterval);
         gameOver = true;
         console.log(gameOver);
-        $('.game-over-page').show();
+        $(".game-over-page").show();
     }
 
-
-    else {
+    else if ($(event.target).text() == questions[questionNum].answer) {
+        score = score + 20;
         questionNum++;
+
+        if (gameOver == false) {
         $('.question-text').text(questions[questionNum].title);
         $('#answer-one').text(questions[questionNum].choices[0]);
         $('#answer-two').text(questions[questionNum].choices[1]);
         $('#answer-three').text(questions[questionNum].choices[2]);
         $('#answer-four').text(questions[questionNum].choices[3]);
+        }
+        answer = true;
+
+    }
+
+    else {
+        questionNum++;
+        if (gameOver == false) {
+        $('.question-text').text(questions[questionNum].title);
+        $('#answer-one').text(questions[questionNum].choices[0]);
+        $('#answer-two').text(questions[questionNum].choices[1]);
+        $('#answer-three').text(questions[questionNum].choices[2]);
+        $('#answer-four').text(questions[questionNum].choices[3]);
+        }
         answer = false;
         var cTime = $(".time").text();
         var timeSub = cTime - 15;

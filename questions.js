@@ -26,4 +26,5 @@ var questions = [
         choices: ["Javascript", "terminal/bash", "for loops", "console.log"],
         answer: "console.log"
     },
+
 ];
