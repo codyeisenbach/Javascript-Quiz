@@ -173,6 +173,8 @@ function showScores() {
 
 
 function showHighScorePage() {
+    $(".question-btn").hide();
+    $(".question-text").hide();
     $("#start-button").hide();
     $(".game-over-page").hide();
     $(".border").hide();
