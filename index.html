@@ -18,20 +18,21 @@
 
     <div class="container">
         <div class="top-bar">
-            <a id="high-scores" href="">High Scores</a>
+            <button id="high-scores">High Scores</button>
             <div class="time"></div>
         </div>
 
         <div class="col" class="q-btn">
-            <button id="start-button" type="button" class="btn btn-primary">Start Game</button>
+            <btn id="start-button" type="button" class="btn btn-primary">Start Game</btn>
         </div>
 
         <div class="game-over-page">
             <h1 class="game-over-text">All done!</h1>
+            <h1 id="final-score-display"></h1>
             <div class="hsInput w-100">
                 <div class="input-group mb-3 col-5">
                     <div class="input-group-prepend">
-                        <button class="btn btn-outline-secondary initial-button" type="button">Enter Initials</button>
+                        <btn type="button" class="btn btn-primary initial-button">Enter Initials</btn>
                     </div>
                     <input type="text" class="form-control" placeholder="" aria-label=""
                         aria-describedby="basic-addon1">
@@ -41,8 +42,13 @@
         </div>
 
         <div class="high-score-page">
-            <div class="score-box">
-                <h2 class="hs">test</h2>
+            <div class="score-box d-flex flex-column">
+                <h4 id="hs"></h4>
+                <h5 id="hs1"></h5>
+                <h5 id="hs2"></h5>
+                <h5 id="hs3"></h5>
+                <h5 id="hs4"></h5>
+                <h5 id="hs5"></h5>
             </div>
         </div>
 
@@ -55,25 +61,25 @@
             <div class="row" class="buttons">
 
                 <div class="col" class="q-btn">
-                    <button id="answer-one" type="button" class="btn btn-primary answer-button"></button>
+                    <btn id="answer-one" type="button" class="btn btn-primary answer-button"></btn>
                 </div>
 
                 <div class="w-100"></div>
 
                 <div class="col" class="q-btn">
-                    <button id="answer-two" type="button" class="btn btn-primary answer-button">answer Two</button>
+                    <btn id="answer-two" type="button" class="btn btn-primary answer-button">answer Two</btn>
                 </div>
 
                 <div class="w-100"></div>
 
                 <div class="col" class="q-btn">
-                    <button id="answer-three" type="button" class="btn btn-primary answer-button">answer Three</button>
+                    <btn id="answer-three" type="button" class="btn btn-primary answer-button">answer Three</btn>
                 </div>
 
                 <div class="w-100"></div>
 
                 <div class="col" class="q-btn">
-                    <button id="answer-four" type="button" class="btn btn-primary answer-button">answer Four</button>
+                    <btn id="answer-four" type="button" class="btn btn-primary answer-button">answer Four</btn>
                 </div>
 
             </div>

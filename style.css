@@ -53,10 +53,24 @@ margin-top: 10%;
     display: flex;
     justify-content: center;
     align-items: top;
-width: 40%;
-height: 20%;
-background-color: rgb(241, 202, 195);
+    margin-left: 10%;
+    padding-left: 5%;
+    width: 40%;
+    height: 40%;
+    background-color: rgb(241, 202, 195);
 }
+
+button {
+    background: none!important;
+    border: none;
+    padding: 0!important;
+    /*optional*/
+    font-family: arial, sans-serif;
+    /*input has OS specific font-family*/
+    color: #069;
+    text-decoration: underline;
+    cursor: pointer;
+  }
 
 .hs {
     display: flex;

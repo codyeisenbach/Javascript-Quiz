@@ -5,6 +5,7 @@ var myInterval;
 var result = "3";
 var gameOver = false;
 var initialBtn = $(".initial-button");
+var highScoreBtn = $("#high-scores");
 var scores = [];
 var scoreObject = {};
 
@@ -60,10 +61,10 @@ $(".answer-button").click(function () {
             score = score + 20;
         }
         $('.content').hide();
-        clearInterval(myInterval);
         gameOver = true;
         $(".game-over-page").show();
         $("#final-score-display").text("Your final score is " + score);
+        clearInterval(myInterval);
     }
 
     else if ($(event.target).text() == questions[questionNum].answer) {
@@ -113,18 +114,66 @@ $(".answer-button").click(function () {
 
 function saveInitials() {
     var userInitials = document.querySelector(".form-control").value;
+
     if (localStorage.getItem('scores')){
-        scores =JSON.parse(localStorage.getItem('scores'));
+        scores = JSON.parse(localStorage.getItem('scores'));
     }
+
     scoreObject = {initials: userInitials, score: score};
+
     scores.push(scoreObject);
+
     localStorage.setItem('scores', JSON.stringify(scores));
-    $(".hs").text("HIGH SCORE VIEW: " + scores[0].initials + " - " + scores[1].score
-    );
+
+    const highScoreList = scores
+    .sort(function (a, b) {
+        return b.score - a.score;
+      });
+
+    console.log(highScoreList);
+
+
+    $("#hs").text("TOP 5 SCORES: "),
+    $("#hs1").text(scores[0].initials + ": " + scores[0].score)
+    $("#hs2").text(scores[1].initials + ": " + scores[1].score)
+    $("#hs3").text(scores[2].initials + ": " + scores[2].score)
+    $("#hs4").text(scores[3].initials + ": " + scores[3].score)
+    $("#hs5").text(scores[4].initials + ": " + scores[4].score)
+
+
     showHighScorePage();
 };
 
+function showScores() {
+
+    if (localStorage.getItem('scores')){
+        scores = JSON.parse(localStorage.getItem('scores'));
+    }
+
+    const highScoreList = scores
+    .sort(function (a, b) {
+        return b.score - a.score;
+      });
+
+    console.log(highScoreList);
+
+
+    $("#hs").text("TOP 5 SCORES: "),
+    $("#hs1").text(scores[0].initials + ": " + scores[0].score)
+    $("#hs2").text(scores[1].initials + ": " + scores[1].score)
+    $("#hs3").text(scores[2].initials + ": " + scores[2].score)
+    $("#hs4").text(scores[3].initials + ": " + scores[3].score)
+    $("#hs5").text(scores[4].initials + ": " + scores[4].score)
+
+
+    showHighScorePage();
+};
+
+
+
+
 function showHighScorePage() {
+    $("#start-button").hide();
     $(".game-over-page").hide();
     $(".border").hide();
     $(".result").hide();
@@ -132,3 +181,4 @@ function showHighScorePage() {
 };
 
 initialBtn.click(saveInitials);
+highScoreBtn.click(showScores);
